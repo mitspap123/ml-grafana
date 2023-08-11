@@ -1,4 +1,4 @@
-![Image1](https://github.com/mitspap123/ml-grafana/main/docs/grafana-logo.png)
+![Image1](https://github.com/mitspap123/ml-grafana/blob/main/docs/grafana-logo.png)
 ## The open-source platform for monitoring and observability
 
 The **ml-grafana** project allows you to deploy a Grafana Instance with Prometheus as `default` datasource in order to create custom Dashboards for Monitoring & Alerting
