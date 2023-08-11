@@ -55,8 +55,6 @@ git push -uf origin main
 
 ## Test and Deploy
 
-Password and Roll-based Access is documented under a Confluence Page [here](https://mainlevel.atlassian.net/wiki/spaces/IT/pages/1555300473/Links+Passwords)
-<br>
 <br>
 After deploying Grafana you should be able to see the following logs
 
