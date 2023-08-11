@@ -1,0 +1,39 @@
+## Grafana Alert Slack Title
+
+{{ define "slack.title" }}
+Grafana alert is {{ .Status }}
+{{ end }}
+
+
+## Grafana Alert Slack Message
+
+{{ define "slack.fire_alert" -}}
+{{ .Labels.alertname }} is {{.Status}}
+Alert Status: {{ .Annotations.summary }}
+- {{ .Annotations.description }} 
+For more detail explore: {{ .Annotations.runbook_url }}.
+{{ end }}
+
+{{ define "slack.resolve_alert" -}}
+Alert Status: {{ .Labels.alertname }} is {{.Status}}
+Labels:
+{{ range .Labels.SortedPairs -}}
+- {{ .Name }}: {{ .Value }}
+{{ end -}} 
+For more detail explore: {{ .Annotations.runbook_url }}.
+{{ end }}
+
+{{ define "slack.message" -}}
+{{ if .Alerts.Firing -}}
+{{ len .Alerts.Firing }} firing alert(s):
+{{ range .Alerts.Firing }}
+{{ template "slack.fire_alert" . }}
+{{ end -}}
+{{ end }}
+{{ if .Alerts.Resolved -}}
+{{ len .Alerts.Resolved }} resolved alert(s):
+{{ range .Alerts.Resolved }}
+{{ template "slack.resolve_alert" .}}
+{{ end -}}
+{{ end }}
+{{- end }}
